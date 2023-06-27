@@ -1,0 +1,20 @@
+{
+  "visi": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatem provident, velit ea dolore voluptatibus? Voluptate, cum laborum eligendi hic, reprehenderit aliquid temporibus dolor facilis tempora magnam beatae aliquam ipsum..",
+  "misi": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit corrupti earum, voluptate voluptas vel harum enim tempore corporis! Expedita doloremque reiciendis quae voluptas eius quas esse atque praesentium nisi sed.",
+  "pengurus" : [
+    {
+      "nama": "Ketua 1",
+      "jabatan": "Ketua Umum",
+      "kampus": "UNIV A",
+      "link_img": "https://dl.dropbox.com/s/rkecihdtkcd5nf9/Duan1_compress57.jpg?dl=2",
+      "ID" : ["ketum"]
+    },
+    {
+      "nama": "Ketua 2",
+      "jabatan": "Ketua Pembantu",
+      "kampus": "UNIV B",
+      "link_img": "https://dl.dropbox.com/s/rkecihdtkcd5nf9/Duan1_compress57.jpg?dl=2",
+      "ID" : ["ketum"]
+    }
+  ]
+}
