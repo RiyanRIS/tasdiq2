@@ -60,11 +60,11 @@
             </div>
 
             <!-- FORM Berkas -->
-            <form method="post" action="tambah" data-refresh="refresh" data-url="<?= site_url("admin/berkas/tambah") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-4">
+            <form method="post" action="tambah" data-refresh="refresh" data-url="<?= site_url("admin/galeri/tambah") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-4">
               <div class="card card-success">
 
                 <div class="card-header">
-                  <h3 class="card-title">Tambah Berkas</h3>
+                  <h3 class="card-title">Tambah Galeri</h3>
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                     </button>
@@ -73,9 +73,9 @@
 
                 <div class="card-body">
                   <div class="form-group" id="notifikasi_nama">
-                    <label for="nama">Nama Berkas</label>
+                    <label for="nama">Nama Foto</label>
                     <input type="hidden" name="id" value="<?= @$record['id'] ?>">
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Berkas" required="true" autocomplete="off">
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Foto" required="true" autocomplete="off">
                   </div>
 
                   <div class="form-group" id="notifikasi_file">
@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Publikasi</button>
+                  <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                 </div>
               </div>
             </form>

@@ -56,6 +56,12 @@ $routes->group('admin', function ($routes) {
         $routes->post('tambah', 'Admin\Berkas::tambah');
         $routes->get('hapus/(:segment)', 'Admin\Berkas::hapus/$1');
     });
+
+    $routes->group('galeri', function ($routes) {
+        $routes->get('/', 'Admin\Galeri::index');
+        $routes->post('tambah', 'Admin\Galeri::tambah');
+        $routes->get('hapus/(:segment)', 'Admin\Galeri::hapus/$1');
+    });
 });
 
 /*

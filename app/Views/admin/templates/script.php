@@ -143,7 +143,7 @@
               }, 'fast');
             }
           }
-
+          await new Promise(r => setTimeout(r, 1000))
           $('#modalnya .modal-footer #submit').prop('disabled', false)
           submit.prop('disabled', false)
         }

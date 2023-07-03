@@ -13,6 +13,7 @@ use Psr\Log\LoggerInterface;
 use \App\Models\AnggotaModel;
 use \App\Models\AuthModel;
 use App\Models\BerkasModel;
+use App\Models\GaleriModel;
 use App\Models\KampusModel;
 
 /**
@@ -46,6 +47,7 @@ abstract class BaseController extends Controller
     protected $admin;
     protected $berkas;
     protected $kampus;
+    protected $galeri;
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -88,6 +90,7 @@ abstract class BaseController extends Controller
         $this->admin = new AdminModel();
         $this->berkas = new BerkasModel();
         $this->kampus = new KampusModel();
+        $this->galeri = new GaleriModel();
     }
 
     function isAdmin(): bool
