@@ -33,6 +33,31 @@ $routes->get('/', 'Home::index');
 $routes->get('login', 'Auth::login');
 $routes->get('daftar', 'Auth::daftar');
 
+$routes->group('admin', function ($routes) {
+    $routes->get('/', 'Admin\Home::index');
+
+    $routes->match(['get', 'post'], 'login', 'Admin\Auth::login');
+    $routes->get('logout', 'Admin\Auth::logout');
+
+    $routes->group('anggota', function ($routes) {
+        $routes->get('/', 'Admin\Anggota::index');
+        $routes->post('tambah', 'Admin\Anggota::tambah');
+        $routes->get('hapus/(:segment)', 'Admin\Anggota::hapus/$1');
+    });
+
+    $routes->group('kampus', function ($routes) {
+        $routes->get('/', 'Admin\Kampus::index');
+        $routes->post('tambah', 'Admin\Kampus::tambah');
+        $routes->get('hapus/(:segment)', 'Admin\Kampus::hapus/$1');
+    });
+
+    $routes->group('berkas', function ($routes) {
+        $routes->get('/', 'Admin\Berkas::index');
+        $routes->post('tambah', 'Admin\Berkas::tambah');
+        $routes->get('hapus/(:segment)', 'Admin\Berkas::hapus/$1');
+    });
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

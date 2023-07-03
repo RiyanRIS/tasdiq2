@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\AdminModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -10,6 +11,9 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
 use \App\Models\AnggotaModel;
+use \App\Models\AuthModel;
+use App\Models\BerkasModel;
+use App\Models\KampusModel;
 
 /**
  * Class BaseController
@@ -38,6 +42,10 @@ abstract class BaseController extends Controller
     protected $cfg;
 
     protected $anggota;
+    protected $auth;
+    protected $admin;
+    protected $berkas;
+    protected $kampus;
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -71,12 +79,50 @@ abstract class BaseController extends Controller
         $this->cfg = new \SConfig();
 
         $this->session      = \Config\Services::session();
-        $this->validation 	= \Config\Services::validation();
-        $this->db 	= \Config\Database::connect();
+        $this->validation     = \Config\Services::validation();
+        $this->db     = \Config\Database::connect();
         // $this->image        = \Config\Services::image();
 
         $this->anggota = new AnggotaModel();
-
+        $this->auth = new AuthModel();
+        $this->admin = new AdminModel();
+        $this->berkas = new BerkasModel();
+        $this->kampus = new KampusModel();
     }
 
+    function isAdmin(): bool
+    {
+        if (session()->get('isAdmin') == true) {
+            return true;
+        }
+        return false;
+    }
+
+    function isLogin(): bool
+    {
+        if (session()->get('isLogin') == true) {
+            return true;
+        }
+        return false;
+    }
+
+    function isSecure($who = 'admin')
+    {
+        if (session()->get('isLogin')) {
+            if ($who == 'admin') {
+                if (session()->get('isAdmin')) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else if ($who == 'user') {
+                if (session()->get('isAdmin')) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
