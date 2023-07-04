@@ -18,56 +18,12 @@
       <section class="content">
         <div class="container-fluid">
           <div class="row">
-            <!-- TABEL anggota -->
-            <div class="col-sm-12">
-              <a href="<?= site_url('admin/anggota/tambah') ?>" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Anggota</a>
-            </div>
-            <div class="col-sm-4">
-              <div class="card card-success">
-                <div class="card-header">
-                  <h3 class="card-title">List Anggota</h3>
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="card-body">
-                  <table id="datatabletanpasearch" class="table table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>USERNAME</th>
-                        <th>NAMA</th>
-                        <th>AKSI</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php if ($anggota != null) {
-                        foreach ($anggota as $key => $v) { ?>
-                          <tr>
-                            <td><?= ++$key ?></td>
-                            <td><?= $v->username ?></td>
-                            <td><?= $v->nama ?></td>
-                            <td>
-                              <a onclick="return confirm('Hapus Data?\nTindakan ini tidak dapat diurungkan.')" href="<?= site_url('admin/anggota/hapus/' . $v->id_anggota) ?>" class="btn btn-sm btn-danger" title="Hapus"><i class="fa fa-trash"></i></a>
-                            </td>
-                          </tr>
-                      <?php }
-                      } ?>
-                    </tbody>
-                  </table>
-
-                </div>
-              </div>
-            </div>
-
-            <!-- FORM Berkas -->
-            <form method="post" action="tambah" data-refresh="refresh" data-url="<?= site_url("admin/anggota/tambah") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-sm-8">
+            <!-- FORM Anggota -->
+            <form method="post" action="tambah" data-refresh="refresh" data-url="<?= site_url("admin/anggota/tambah") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-sm-12">
               <div class="card card-success">
 
                 <div class="card-header">
-                  <h3 class="card-title">Detail Anggota</h3>
+                  <h3 class="card-title">Tambah Anggota</h3>
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                     </button>
@@ -77,7 +33,7 @@
                 <div class="card-body">
                   <div class="form-group" id="notifikasi_nama">
                     <label for="nama">Nama</label>
-                    <input type="hidden" name="id_anggota" id="id_anggota">
+                    <input type="hidden" name="id" value="<?= @$record['id'] ?>">
                     <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Anggota" required="true" autocomplete="off">
                   </div>
 
@@ -94,7 +50,7 @@
                   <div class="form-group" id="notifikasi_tgl_lahir">
                     <label>Jenis Kelamin</label>
                     <div class="custom-control custom-radio">
-                      <input id="laki" name="jenis_kelamin" type="radio" class="custom-control-input" value="Laki-laki" required>
+                      <input id="laki" name="jenis_kelamin" type="radio" class="custom-control-input" value="Laki-laki" checked required>
                       <label class="custom-control-label" for="laki">Laki-laki</label>
                     </div>
                     <div class="custom-control custom-radio">
@@ -153,12 +109,12 @@
 
                   <div class="form-group" id="notifikasi_password">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Password Jika Merubah" autocomplete="off">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Nama Anggota" autocomplete="off">
                   </div>
                 </div>
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Ubah</button>
+                  <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                 </div>
               </div>
             </form>
@@ -174,40 +130,7 @@
   </div>
   <!-- ./wrapper -->
   <?= view("admin/templates/script") ?>
-  <script>
-    var table = $('#datatabletanpasearch').DataTable({
-      searching: false
-    });
 
-    $('#datatabletanpasearch tbody').on('click', 'tr', function() {
-      var rowData = table.row(this).data();
-      if (rowData) {
-        let username = rowData[1];
-        $.getJSON('<?= site_url('api/anggota/') ?>' + username, function(anggota) {
-          $('#id_anggota').val(anggota.id_anggota)
-          $('#nama').val(anggota.nama)
-          $('#alamat').val(anggota.alamat)
-          $('#tmpt_lahir').val(anggota.tmpt_lahir)
-          $('#tgl_lahir').val(anggota.tgl_lahir)
-          $('#asl_sekolah').val(anggota.asl_sekolah)
-          $('#no_tlpn').val(anggota.no_tlpn)
-          $('#email').val(anggota.email)
-          $('#angkatan').val(anggota.angkatan)
-          $('#jurusan').val(anggota.jurusan)
-          $('#username').val(anggota.username)
-          $('#agama').val(anggota.agama)
-
-          if (anggota.jenis_kelamin == 'Laki-laki') {
-            $('#laki').prop('checked', true);
-          } else {
-            $('#perem').prop('checked', true);
-
-          }
-          console.log(anggota)
-        })
-      }
-    });
-  </script>
 
 </body>
 

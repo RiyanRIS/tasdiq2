@@ -1,5 +1,5 @@
 //TEMPLATE
-const template = (id, img, vid, nama, jabatan, nim, ttl, angkatan, namaPanggilan, quote, hobi) => {
+const template = (id, img, nama, jabatan) => {
   $('#'+id).append(`
   <div class="card m-3 shadow" style="width: 18rem;">
       <img src="${img}" style="width: 100%; class="card-img-top" loading="lazy" alt="${nama}_photo">
@@ -13,13 +13,15 @@ const template = (id, img, vid, nama, jabatan, nim, ttl, angkatan, namaPanggilan
 
 //AJAX 
 $.ajax({
-  url : 'info.json',
+  url : base_url + '/api/struktur',
   type : 'GET',
   dataType : 'JSON',
   success : (result) => {
-    const pengurus = result.pengurus;
-    $.each(pengurus, (index, data) => {
-      template('pengurus_inti', data.link_img, data.link_vid, data.nama, data.jabatan, data.nim, data.ttl, data.angkatan, data.nama_panggilan, data.quote, data.hobi);
+    // console.log(result)
+    // const pengurus = result.pengurus;
+    $.each(result, (index, data) => {
+      let foto = base_url + '/uploads/struktur/' +data.file
+      template('pengurus_inti', foto, data.nama, data.jabatan);
     })
   }
 })

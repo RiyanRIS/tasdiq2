@@ -10,6 +10,7 @@ class Home extends BaseController
     {
         $data = [
             'banner' => $this->banner->find(),
+            'galeri' => $this->galeri->find(),
             'info' => $this->info->find(1),
         ];
         // print_r($data);
@@ -24,6 +25,15 @@ class Home extends BaseController
             'berkas' => $berkas,
         ];
         return view('berkas', $data);
+    }
+
+    public function kampus()
+    {
+        $kampus = $this->kampus->find();
+        $data = [
+            'kampus' => $kampus,
+        ];
+        return view('kampus', $data);
     }
 
     public function ubah()
@@ -83,5 +93,11 @@ class Home extends BaseController
     {
         $info = $this->info->find(1);
         return json_encode($info->misi);
+    }
+
+    function struktur()
+    {
+        $struktur = $this->struktur->find();
+        return json_encode($struktur);
     }
 }

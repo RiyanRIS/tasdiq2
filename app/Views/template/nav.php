@@ -23,6 +23,7 @@ $cfg = new \SConfig();
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
             <?php if (session()->isLogin) { ?>
               <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('berkas') ?>">Berkas</a></li>
+              <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('kampus') ?>">Kampus</a></li>
               <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('ubah') ?>">Ubah Profil</a></li>
               <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('logout') ?>">Logout</a></li>
             <?php  } else { ?>

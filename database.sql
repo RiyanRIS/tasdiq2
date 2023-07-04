@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2023 at 10:40 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 7.4.30
+-- Generation Time: Jul 04, 2023 at 02:19 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ci42`
+-- Database: `ci4`
 --
 
 -- --------------------------------------------------------
@@ -32,7 +32,7 @@ CREATE TABLE `tbl_admin` (
   `nama` varchar(40) NOT NULL,
   `username` varchar(40) NOT NULL,
   `password` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_admin`
@@ -62,15 +62,17 @@ CREATE TABLE `tbl_anggota` (
   `jurusan` varchar(5) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_anggota`
 --
 
 INSERT INTO `tbl_anggota` (`id_anggota`, `nama`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `alamat`, `asl_sekolah`, `no_tlpn`, `email`, `angkatan`, `jurusan`, `username`, `password`) VALUES
-(1, 'Ini nama lengkapppp', 'sleman', '2002-04-14', 'Laki-laki', 'Khatolik', 'Jl Mawar Bunga melati', 'ugm', '628966772323', 'ini@email.com', '2008', 'infor', '1234', '$2y$10$HEI.JkV5xm1k9Tk/P86p.O4gYQTaieuRRbAhfK7cgZlCKiqaSAaUa'),
-(2, 'nama2', '123', '1223-02-12', 'Perempuan', 'Khatolik', '123123', '123123', '12312', '3123@das.22', '3123123', '23232', '12345', '$2y$10$8kzn3b6g8EeaDnPoOtTbX.Ohcux3vz.O49/XgIfTCP/J/411E/pSC');
+(1, 'Ini nama lengkap', 'sleman', '2002-04-14', 'Laki-laki', 'Khatolik', 'Jl Mawar Bunga melati', 'ugm', '628966772323', 'ini@email.com', '2008', 'infor', '1234', '$2y$10$HEI.JkV5xm1k9Tk/P86p.O4gYQTaieuRRbAhfK7cgZlCKiqaSAaUa'),
+(2, 'nama2', '123', '1223-02-12', 'Perempuan', 'Khatolik', '123123', '123123', '12312', '3123@das.22', '3123123', '23232', '12345', '$2y$10$8kzn3b6g8EeaDnPoOtTbX.Ohcux3vz.O49/XgIfTCP/J/411E/pSC'),
+(3, 'Sulaiman', '123123', '2023-07-04', 'Laki-laki', 'Kristen', 'asddas', 'asdsad', 'asdsa', 'dsd.sd@das.dd', 'asdasd', 'sadas', 'asd', '$2y$10$KX9qWE86.BkEgIPhSj06guH0goK9UZ/QBHcaKhNCMR8IEMnYh7YS2'),
+(4, 'asdasd', 'asdasdas', '1333-12-12', 'Laki-laki', 'Kristen', '123', '123', '123', '123@dd.dd', '123', '123', '123', '$2y$10$MlaAqz1Rip4rkajpSvq7DOnTxPTYMxc5so4xW5kiHdRokpSgXRfJi');
 
 -- --------------------------------------------------------
 
@@ -83,7 +85,7 @@ CREATE TABLE `tbl_banner` (
   `nama` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL,
   `upload_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_banner`
@@ -105,7 +107,7 @@ CREATE TABLE `tbl_berkas` (
   `nama` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL,
   `upload_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_berkas`
@@ -126,7 +128,7 @@ CREATE TABLE `tbl_galeri` (
   `nama` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL,
   `upload_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_galeri`
@@ -145,7 +147,7 @@ CREATE TABLE `tbl_info` (
   `id_info` int(11) NOT NULL,
   `visi` text NOT NULL,
   `misi` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_info`
@@ -166,7 +168,7 @@ CREATE TABLE `tbl_kampus` (
   `alamat_kampus` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL,
   `create_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_kampus`
@@ -188,7 +190,7 @@ CREATE TABLE `tbl_struktur` (
   `jabatan` varchar(64) NOT NULL,
   `file` varchar(255) NOT NULL,
   `upload_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_struktur`
@@ -264,7 +266,7 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_anggota`
 --
 ALTER TABLE `tbl_anggota`
-  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_banner`

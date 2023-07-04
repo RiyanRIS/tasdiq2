@@ -51,6 +51,9 @@
     } ?>
 
     $('#datatable').DataTable()
+    // $('#datatabletanpasearch').DataTable({
+    //   searching: false
+    // })
 
     $('#tabelexport').DataTable({
       dom: 'Bfrtip',
@@ -96,12 +99,13 @@
           $('#' + formIdN + ' .card').append("<div class='overlay'><i class='fas fa-2x fa-sync-alt'></i></div>")
           await new Promise(r => setTimeout(r, 500))
         },
-        complete: function() {
+        complete: async function() {
+          await new Promise(r => setTimeout(r, 2000))
           $('#loading').hide()
           $('.overlay').remove()
           $("input[type='password']").val("")
-          // $('#modalnya .modal-footer #submit').prop('disabled', false)
-          // submit.prop('disabled', false)
+          $('#modalnya .modal-footer #submit').prop('disabled', false)
+          submit.prop('disabled', false)
         },
         error: function() {
           toastr.error("Terjadi Kesalahan Pada Server!", "Error");

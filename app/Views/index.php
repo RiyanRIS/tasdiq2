@@ -29,6 +29,7 @@ $cfg = new \SConfig();
           <img class="img-slide" src="<?= base_url('uploads/banner/' . $v->file) ?>" alt="<?= $v->nama ?>" style="width: 100%;">
           <div class="carousel-caption d-none d-md-block">
             <h5><?= $v->nama ?></h5>
+            <p><a class="btn btn-lg btn-primary" href="daftar" role="button">Daftar Sekarang</a></p>
           </div>
         </div>
       <?php } ?>
@@ -121,18 +122,11 @@ $cfg = new \SConfig();
         <section class="">
           <div class="splide__track">
             <ul class="splide__list">
-              <li class="splide__slide justify-content-center">
-                <img class="w-100" src="assets/img/galery/1.jpeg" height="300" alt="slide" />
-              </li>
-              <li class="splide__slide">
-                <img class="w-100" src="assets/img/galery/2.jpeg" height="300" alt="slide" />
-              </li>
-              <li class="splide__slide">
-                <img class="w-100" src="assets/img/galery/3.jpeg" height="300" alt="slide" />
-              </li>
-              <li class="splide__slide">
-                <img class="w-100" src="assets/img/galery/4.jpeg" height="300" alt="slide" />
-              </li>
+              <?php foreach ($galeri as $key => $v) { ?>
+                <li class="splide__slide">
+                  <img class="w-100" src="<?= base_url('uploads/galeri/' . $v->file) ?>" height="300" alt="slide" />
+                </li>
+              <?php } ?>
             </ul>
           </div>
         </section>

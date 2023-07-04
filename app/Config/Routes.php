@@ -31,6 +31,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('berkas', 'Home::berkas');
+$routes->get('kampus', 'Home::kampus');
 $routes->match(['get', 'post'], 'ubah', 'Home::ubah');
 
 $routes->match(['get', 'post'], 'login', 'Auth::login');
@@ -45,7 +46,9 @@ $routes->group('admin', function ($routes) {
 
     $routes->group('anggota', function ($routes) {
         $routes->get('/', 'Admin\Anggota::index');
+        $routes->get('tambah', 'Admin\Anggota::vtambah');
         $routes->post('tambah', 'Admin\Anggota::tambah');
+        // $routes->post('ubah', 'Admin\Anggota::tambah');
         $routes->get('hapus/(:segment)', 'Admin\Anggota::hapus/$1');
     });
 
@@ -91,6 +94,8 @@ $routes->group('admin', function ($routes) {
 $routes->group('api', function ($routes) {
     $routes->get('visi', 'Home::visi');
     $routes->get('misi', 'Home::misi');
+    $routes->get('struktur', 'Home::struktur');
+    $routes->get('anggota/(:segment)', 'Admin\Anggota::getbyusername/$1');
 });
 
 $routes->get('tes', 'Home::tes');
