@@ -30,8 +30,10 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('login', 'Auth::login');
-$routes->get('daftar', 'Auth::daftar');
+$routes->get('dashboard', 'Home::dashboard');
+
+$routes->match(['get', 'post'], 'login', 'Auth::login');
+$routes->match(['get', 'post'], 'daftar', 'Auth::daftar');
 
 $routes->group('admin', function ($routes) {
     $routes->get('/', 'Admin\Home::index');
@@ -63,6 +65,8 @@ $routes->group('admin', function ($routes) {
         $routes->get('hapus/(:segment)', 'Admin\Galeri::hapus/$1');
     });
 });
+
+$routes->get('tes', 'Home::tes');
 
 /*
  * --------------------------------------------------------------------

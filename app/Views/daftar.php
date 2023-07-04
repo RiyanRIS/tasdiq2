@@ -28,7 +28,7 @@ $cfg = new \SConfig();
 
         <div class="mb-3 col-md-6">
           <label for="tmpt_lahir">Tempat Lahir</label>
-          <input type="text" class="form-control" name="tmpt_lahir" id="tmpt_lahir" placeholder="" value="<?= @$post['tmpt_lahir'] ?>" required>
+          <input type="text" class="form-control" name="tmpt_lahir" id="tmpt_lahir" placeholder="Masukkan Tempat Lahir" value="<?= @$post['tmpt_lahir'] ?>" required>
           <div class="invalid-feedback">
             <?= @$err['tmpt_lahir'] ?>
           </div>
@@ -45,11 +45,11 @@ $cfg = new \SConfig();
         <div class="d-block my-3 col-md-6">
           <label>Jenis Kelamin</label>
           <div class="custom-control custom-radio">
-            <input id="laki" name="jenis_kelamin" type="radio" class="custom-control-input" value="Laki-laki" checked required>
+            <input id="laki" name="jenis_kelamin" <?= (@$post['jenis_kelamin'] == 'Laki-laki' ? 'checked' : '') ?> type="radio" class="custom-control-input" value="Laki-laki" checked required>
             <label class="custom-control-label" for="laki">Laki-laki</label>
           </div>
           <div class="custom-control custom-radio">
-            <input id="perem" name="jenis_kelamin" type="radio" class="custom-control-input" value="Perempuan" required>
+            <input id="perem" name="jenis_kelamin" <?= (@$post['jenis_kelamin'] == 'Perempuan' ? 'checked' : '') ?> type="radio" class="custom-control-input" value="Perempuan" required>
             <label class="custom-control-label" for="perem">Perempuan</label>
           </div>
           <div class="invalid-feedback">
@@ -61,12 +61,12 @@ $cfg = new \SConfig();
           <label for="agama">Agama</label>
           <select class="custom-select d-block w-100" name="agama" id="agama" required>
             <option value="">--- Pilih Agama ---</option>
-            <option value="Islam">Islam</option>
-            <option value="Kristen">Kristen</option>
-            <option value="Khatolik">Khatolik</option>
-            <option value="Hindu">Hindu</option>
-            <option value="Budha">Budha</option>
-            <option value="Konghuchu">Konghuchu</option>
+            <option <?= (@$post['agama'] == 'Islam' ? 'selected' : '') ?> value="Islam">Islam</option>
+            <option <?= (@$post['agama'] == 'Kristen' ? 'selected' : '') ?> value="Kristen">Kristen</option>
+            <option <?= (@$post['agama'] == 'Khatolik' ? 'selected' : '') ?> value="Khatolik">Khatolik</option>
+            <option <?= (@$post['agama'] == 'Hindu' ? 'selected' : '') ?> value="Hindu">Hindu</option>
+            <option <?= (@$post['agama'] == 'Budha' ? 'selected' : '') ?> value="Budha">Budha</option>
+            <option <?= (@$post['agama'] == 'Konghuchu' ? 'selected' : '') ?> value="Konghuchu">Konghuchu</option>
           </select>
           <div class="invalid-feedback">
             <?= @$err['agama'] ?>
@@ -74,32 +74,40 @@ $cfg = new \SConfig();
         </div>
 
         <div class="mb-3 col-md-12">
-          <label for="alamat">Alamat Sekarang</label>
-          <input type="text" class="form-control" name="alamat" id="alamat" placeholder="" value="<?= @$post['alamat'] ?>" required>
+          <label for="alamat">Alamat Domisili</label>
+          <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Masukkan Alamat Di Yogyakarta" value="<?= @$post['alamat'] ?>" required>
           <div class="invalid-feedback">
             <?= @$err['alamat'] ?>
           </div>
         </div>
 
-        <div class="mb-3 col-md-6">
+        <div class="mb-3 col-md-12">
           <label for="asl_sekolah">Kampus Asal</label>
-          <input type="text" class="form-control" name="asl_sekolah" id="asl_sekolah" placeholder="" value="<?= @$post['asl_sekolah'] ?>" required>
+          <input type="text" class="form-control" name="asl_sekolah" id="asl_sekolah" placeholder="Masukkan Kampus Asal" value="<?= @$post['asl_sekolah'] ?>" required>
           <div class="invalid-feedback">
             <?= @$err['asl_sekolah'] ?>
           </div>
         </div>
 
         <div class="mb-3 col-md-6">
-          <label for="asl_sekolah">Jurusan</label>
-          <input type="text" class="form-control" name="asl_sekolah" id="asl_sekolah" placeholder="" value="<?= @$post['asl_sekolah'] ?>" required>
+          <label for="jurusan">Jurusan</label>
+          <input type="text" class="form-control" name="jurusan" id="jurusan" placeholder="Masukkan Jurusan Kuliah" value="<?= @$post['jurusan'] ?>" required>
           <div class="invalid-feedback">
-            <?= @$err['asl_sekolah'] ?>
+            <?= @$err['jurusan'] ?>
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-6">
+          <label for="angkatan">Angkatan</label>
+          <input type="text" class="form-control" name="angkatan" id="angkatan" placeholder="Masukkan Angkatan Kuliah" value="<?= @$post['angkatan'] ?>" required>
+          <div class="invalid-feedback">
+            <?= @$err['angkatan'] ?>
           </div>
         </div>
 
         <div class="mb-3 col-md-6">
           <label for="email">Email</label>
-          <input type="email" class="form-control" name="email" id="email" placeholder="" value="<?= @$post['email'] ?>" required>
+          <input type="email" class="form-control" name="email" id="email" placeholder="Masukkan Email" value="<?= @$post['email'] ?>" required>
           <div class="invalid-feedback">
             <?= @$err['email'] ?>
           </div>
@@ -107,7 +115,7 @@ $cfg = new \SConfig();
 
         <div class="mb-3 col-md-6">
           <label for="no_tlpn">No. Telepon</label>
-          <input type="text" class="form-control" name="no_tlpn" id="no_tlpn" placeholder="" value="<?= @$post['no_tlpn'] ?>" required>
+          <input type="text" class="form-control" name="no_tlpn" id="no_tlpn" placeholder="Masukkan Nomor Telepon" value="<?= @$post['no_tlpn'] ?>" required>
           <div class="invalid-feedback">
             <?= @$err['no_tlpn'] ?>
           </div>
@@ -115,7 +123,7 @@ $cfg = new \SConfig();
 
         <div class="mb-3 col-md-6">
           <label for="username">Username</label>
-          <input type="text" class="form-control" name="username" id="username" placeholder="" value="<?= @$post['username'] ?>" required>
+          <input type="text" class="form-control" name="username" id="username" placeholder="Masukkan Username" value="<?= @$post['username'] ?>" required>
           <div class="invalid-feedback">
             <?= @$err['username'] ?>
           </div>
@@ -123,7 +131,7 @@ $cfg = new \SConfig();
 
         <div class="mb-3 col-md-6">
           <label for="password">Password</label>
-          <input type="password" class="form-control" name="password" id="password" placeholder="" value="" required>
+          <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password" value="" required>
           <div class="invalid-feedback">
             <?= @$err['password'] ?>
           </div>

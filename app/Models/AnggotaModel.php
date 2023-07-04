@@ -10,9 +10,9 @@ class AnggotaModel extends Model
 	protected $table = 'tbl_anggota';
 	protected $primaryKey = 'id_anggota';
 
-	protected $returnType     = 'array';
+	protected $returnType     = 'object';
 
-	protected $allowedFields = ['id_anggota', 'nama', 'tmpt_lahir', 'tgl_lahir', 'jenis_kelamin', 'agama', 'alamat', 'asl_sekolah', 'no_tlpn', 'email', 'username', 'password'];
+	protected $allowedFields = ['id_anggota', 'nama', 'tmpt_lahir', 'tgl_lahir', 'jenis_kelamin', 'agama', 'alamat', 'asl_sekolah', 'no_tlpn', 'email', 'angkatan', 'jurusan', 'username', 'password'];
 
 	public $rules_tambah_ubah = [
 		'nama' => [
@@ -57,6 +57,16 @@ class AnggotaModel extends Model
 		],
 		'email' => [
 			'label'  => 'Email',
+			'rules'  => 'required',
+			'errors' => [],
+		],
+		'angkatan' => [
+			'label'  => 'Angkatan',
+			'rules'  => 'required',
+			'errors' => [],
+		],
+		'jurusan' => [
+			'label'  => 'Jurusan',
 			'rules'  => 'required',
 			'errors' => [],
 		],

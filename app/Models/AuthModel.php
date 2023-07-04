@@ -40,6 +40,37 @@ class AuthModel extends Model
     }
   }
 
+  public function login_user(string $username, string $password, bool $remember = false): bool
+  {
+    if (empty($username) || empty($password)) {
+      $this->setError("Username atau password masih ada yang kosong");
+      return false;
+    }
+
+    $query = $this->db->table("tbl_anggota")
+      ->select('*')
+      ->where('username', $username)
+      ->limit(1)
+      ->get();
+
+    $user = $query->getRow();
+
+    if (isset($user)) {
+      if (password_verify($password, $user->password)) {
+
+        $this->setSession($user);
+        $this->setMessage("Berhasil masuk");
+        return true;
+      } else {
+        $this->setMessage("Password salah");
+        return false;
+      }
+    } else {
+      $this->setMessage("Username tidak ditemukan");
+      return false;
+    }
+  }
+
   public function logout($id)
   {
     $sessionData = [
@@ -57,7 +88,7 @@ class AuthModel extends Model
   public function setSession(\stdClass $user, $isAdmin = false): bool
   {
     $sessionData = [
-      'user_id'             => $user->id_admin ?? $user->id,
+      'user_id'             => $user->id_admin ?? $user->id_anggota,
       'user_nama'             => $user->nama,
       // 'user_role'             => $user->role,
       'isLogin'             => true,
