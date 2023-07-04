@@ -21,9 +21,13 @@ $cfg = new \SConfig();
             <i class="fa fa-user"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <!-- <li><a class="dropdown-item js-scroll-trigger" href="#">Ubah Profil</a></li> -->
-            <!-- <li><a class="dropdown-item js-scroll-trigger" href="#">Logout</a></li> -->
-            <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('login') ?>">Login</a></li>
+            <?php if (session()->isLogin) { ?>
+              <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('berkas') ?>">Berkas</a></li>
+              <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('ubah') ?>">Ubah Profil</a></li>
+              <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('logout') ?>">Logout</a></li>
+            <?php  } else { ?>
+              <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('login') ?>">Login</a></li>
+            <?php  } ?>
           </ul>
         </li>
       </ul>

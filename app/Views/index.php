@@ -18,37 +18,27 @@ $cfg = new \SConfig();
   <!-- Carousel-->
   <div id="home" class="carousel slide" data-ride="carousel" style="padding-top: 50px!important">
     <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <?php foreach ($banner as $key => $v) { ?>
+        <li data-target="#home" data-slide-to="<?= $key ?>" class="<?= ($key == 0 ? 'active' : '') ?>"></li>
+      <?php } ?>
     </ol>
 
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="first-slide img-slide" src="assets/img/galery/2.jpeg" alt="First slide" style="width: 100%;">
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="daftar" role="button">Daftar Sekarang</a></p>
+      <?php foreach ($banner as $key => $v) { ?>
+        <div class="carousel-item <?= ($key == 0 ? 'active' : '') ?>">
+          <img class="img-slide" src="<?= base_url('uploads/banner/' . $v->file) ?>" alt="<?= $v->nama ?>" style="width: 100%;">
+          <div class="carousel-caption d-none d-md-block">
+            <h5><?= $v->nama ?></h5>
           </div>
         </div>
-      </div>
-      <div class="carousel-item">
-        <img class="second-slide img-slide" src="assets/img/galery/1.jpeg" alt="Second slide" style="width: 100%;">
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <p><a class="btn btn-lg btn-primary" href="daftar" role="button">Daftar Sekarang</a></p>
-          </div>
-        </div>
-      </div>
+      <?php } ?>
+
     </div>
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+    <a class="carousel-control-prev" href="#home" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#home" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
@@ -67,7 +57,7 @@ $cfg = new \SConfig();
 
       <figure class="text-center" style="max-height: 350px; min-height: 350px; overflow: scroll">
         <blockquote class="blockquote">
-          <p id="visi-misi-layout" class="text-left" style="font-size: 1.1em!important;"><?= $cfg->_visi ?></p>
+          <p id="visi-misi-layout" class="text-left" style="font-size: 1.1em!important;"><?= $info->visi ?></p>
         </blockquote>
       </figure>
 

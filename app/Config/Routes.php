@@ -30,9 +30,11 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('dashboard', 'Home::dashboard');
+$routes->get('berkas', 'Home::berkas');
+$routes->match(['get', 'post'], 'ubah', 'Home::ubah');
 
 $routes->match(['get', 'post'], 'login', 'Auth::login');
+$routes->get('logout', 'Auth::logout');
 $routes->match(['get', 'post'], 'daftar', 'Auth::daftar');
 
 $routes->group('admin', function ($routes) {
@@ -64,6 +66,31 @@ $routes->group('admin', function ($routes) {
         $routes->post('tambah', 'Admin\Galeri::tambah');
         $routes->get('hapus/(:segment)', 'Admin\Galeri::hapus/$1');
     });
+
+    $routes->group('pengaturan', function ($routes) {
+        $routes->group('banner', function ($routes) {
+            $routes->get('/', 'Admin\Pengaturan\Banner::index');
+            $routes->post('tambah', 'Admin\Pengaturan\Banner::tambah');
+            $routes->get('hapus/(:segment)', 'Admin\Pengaturan\Banner::hapus/$1');
+        });
+
+        $routes->group('visi', function ($routes) {
+            $routes->get('/', 'Admin\Pengaturan\Visi::index');
+            $routes->post('tambah', 'Admin\Pengaturan\Visi::tambah');
+            $routes->get('hapus/(:segment)', 'Admin\Pengaturan\Visi::hapus/$1');
+        });
+
+        $routes->group('struktur', function ($routes) {
+            $routes->get('/', 'Admin\Pengaturan\Struktur::index');
+            $routes->post('tambah', 'Admin\Pengaturan\Struktur::tambah');
+            $routes->get('hapus/(:segment)', 'Admin\Pengaturan\Struktur::hapus/$1');
+        });
+    });
+});
+
+$routes->group('api', function ($routes) {
+    $routes->get('visi', 'Home::visi');
+    $routes->get('misi', 'Home::misi');
 });
 
 $routes->get('tes', 'Home::tes');

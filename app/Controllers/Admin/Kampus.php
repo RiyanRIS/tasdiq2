@@ -81,13 +81,10 @@ class Kampus extends BaseController
 
         if (file_exists($path)) {
             unlink($path);
-
-            $hapus = $this->kampus->delete($id);
-
-            $msg = ($hapus ? [1, "Berhasil menghapus data"] : [0, "Gagal menghapus data"]);
-        } else {
-            $msg = [0, "Gagal menghapus dataa"];
         }
+        $hapus = $this->kampus->delete($id);
+
+        $msg = ($hapus ? [1, "Berhasil menghapus data"] : [0, "Gagal menghapus data"]);
 
         return redirect()->to(site_url('admin/kampus'))->with('msg', $msg);
     }

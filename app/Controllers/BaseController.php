@@ -12,9 +12,12 @@ use Psr\Log\LoggerInterface;
 
 use \App\Models\AnggotaModel;
 use \App\Models\AuthModel;
+use App\Models\BannerModel;
 use App\Models\BerkasModel;
 use App\Models\GaleriModel;
+use App\Models\InfoModel;
 use App\Models\KampusModel;
+use App\Models\StrukturModel;
 
 /**
  * Class BaseController
@@ -48,6 +51,9 @@ abstract class BaseController extends Controller
     protected $berkas;
     protected $kampus;
     protected $galeri;
+    protected $banner;
+    protected $struktur;
+    protected $info;
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -91,6 +97,9 @@ abstract class BaseController extends Controller
         $this->berkas = new BerkasModel();
         $this->kampus = new KampusModel();
         $this->galeri = new GaleriModel();
+        $this->banner = new BannerModel();
+        $this->struktur = new StrukturModel();
+        $this->info = new InfoModel();
     }
 
     function isAdmin(): bool
@@ -127,5 +136,14 @@ abstract class BaseController extends Controller
             }
         }
         return false;
+    }
+
+    function resizeImage($path, $width, $height)
+    {
+        // Load library Image Manipulation (misalnya menggunakan library GD)
+        $image = \Config\Services::image()
+            ->withFile($path)
+            ->resize($width, $height)
+            ->save($path);
     }
 }

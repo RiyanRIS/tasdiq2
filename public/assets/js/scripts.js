@@ -6,6 +6,7 @@
 (function ($) {
   "use strict"; // Start of use strict
 
+  window.scrollTo({ top: 0, behavior: "smooth" });
   // Smooth scrolling using jQuery easing
   $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
     if (

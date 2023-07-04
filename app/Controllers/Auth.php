@@ -88,7 +88,7 @@ class Auth extends BaseController
 
 	public function logout()
 	{
-		$this->auth->logout(session()->user_id);
-		return redirect()->to(site_url('login'))->with('msg', [1, "Berhasil Logout"]);
+		$this->auth->logout();
+		return redirect()->to(site_url())->with('msg', [1, "Berhasil Logout"]);
 	}
 }

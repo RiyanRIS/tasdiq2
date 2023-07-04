@@ -75,11 +75,6 @@ class AnggotaModel extends Model
 			'rules'  => 'required',
 			'errors' => [],
 		],
-		'password' => [
-			'label'  => 'Password',
-			'rules'  => 'required',
-			'errors' => [],
-		],
 	];
 
 	public function simpan($data)
@@ -108,7 +103,7 @@ class AnggotaModel extends Model
 			if ($isUpdate == null) {
 				return false;
 			} else {
-				if ($data->id == $isUpdate) {
+				if ($data->id_anggota == $isUpdate) {
 					return true;
 				} else {
 					return false;

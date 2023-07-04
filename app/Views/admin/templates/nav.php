@@ -32,7 +32,7 @@ $cfg = new \SConfig();
             </p>
           </a>
         </li>
-        <!-- <li class="nav-header">MODULE</li> -->
+        <li class="nav-header">MODULE</li>
         <li class="nav-item">
           <a href="<?= site_url('admin/anggota') ?>" data-nav="anggota" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
@@ -73,12 +73,57 @@ $cfg = new \SConfig();
             </p>
           </a>
         </li> -->
-        <!-- <li class="nav-header">SETTING</li>
+        <li class="nav-header">SETTING</li>
         <li class="nav-item">
-          <a href="<?= site_url('admin/pengaturan') ?>" data-nav="pengaturan" class="nav-link">
+          <a href="#" class="nav-link">
             <i class="nav-icon fas fa-cog"></i>
             <p>
               Pengaturan
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?= site_url('admin/pengaturan/banner') ?>" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Banner</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= site_url('admin/pengaturan/visi') ?>" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Visi & Misi</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= site_url('admin/pengaturan/struktur') ?>" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Struktur Kepengurusan</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <!-- <li class="nav-item">
+          <a href="<?= site_url('admin/banner') ?>" data-nav="banner" class="nav-link">
+            <i class="nav-icon fas fa-cog"></i>
+            <p>
+              Banner
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= site_url('admin/visimisi') ?>" data-nav="visimisi" class="nav-link">
+            <i class="nav-icon fas fa-cog"></i>
+            <p>
+              Visi & Misi
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= site_url('admin/struktur') ?>" data-nav="struktur" class="nav-link">
+            <i class="nav-icon fas fa-cog"></i>
+            <p>
+              Struktur Kepengurusan
             </p>
           </a>
         </li> -->

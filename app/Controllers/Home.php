@@ -8,52 +8,80 @@ class Home extends BaseController
 {
     public function index()
     {
-        return view('index');
+        $data = [
+            'banner' => $this->banner->find(),
+            'info' => $this->info->find(1),
+        ];
+        // print_r($data);
+        // die();
+        return view('index', $data);
     }
 
-    function tes()
+    public function berkas()
     {
-        $a = '2023-07-01';
-        $b = '2023-07-05';
-
-        $c = [
-            [
-                'tanggal' => '2023-07-01',
-                'total' => 0
-            ],
-            [
-                'tanggal' => '2023-07-03',
-                'total' => 0
-            ],
-            [
-                'tanggal' => '2023-07-04',
-                'total' => 0
-            ],
+        $berkas = $this->berkas->find();
+        $data = [
+            'berkas' => $berkas,
         ];
-        $tanggalB = array_column($c, 'tanggal');
+        return view('berkas', $data);
+    }
 
-        $nilaiTidakAda = '';
+    public function ubah()
+    {
+        $this->validation->setRules($this->anggota->rules_tambah_ubah);
+        if ($this->request->getPost() && $this->validation->withRequest($this->request)->run()) {
+            // inisialisasi data yang akan dimasukkan ke database
+            $additionalData = $this->request->getPost();
 
-        $tgl = [];
-        while ($a <= $b) {
-            $tgl['tanggal'] = $a;
-            $nilaiTidakAda = array_diff($tanggalB, $tgl);
-            // print_r($nilaiTidakAda);
-            // die();
-            $a = strtotime('+1 day', strtotime($a));
-            $a = date('Y-m-d', $a);
+            if ($additionalData['password'] != '') {
+                $additionalData['password'] =  password_hash($additionalData['password'], PASSWORD_DEFAULT);
+            } else {
+                unset($additionalData['password']);
+            }
+
+            // Cek Valid Username
+            $isValidUsername = $this->anggota->isValidUsername($additionalData['username'], session()->user_id);
+            if (!$isValidUsername) {
+                $data = [
+                    'post' => $this->request->getPost(),
+                    'err' => ['username' => "Username telah digunakan"]
+                ];
+                session()->setFlashdata('msg', [0, "Username telah digunakan"]);
+
+                return view('ubah', $data);
+            }
+
+            // Input ke database
+            $lastid = $this->anggota->update(['id_anggota' => session()->user_id], $additionalData);
+
+            if ($lastid) // Kondisi berhasil menambah data
+            {
+                return redirect()->to(site_url("ubah"))->with('msg', [1, "Berhasil Memperbarui Data"]);
+            } else { // kondisi gagal
+                return redirect()->to(site_url("ubah"))->with('msg', [1, "Gagal Memperbarui Data"]);
+            }
+        } else {
+            if ($this->validation->getErrors()) {
+                session()->setFlashdata('msg', [0, "Isian belum lengkap"]);
+            }
+            $anggota = (array) $this->anggota->find(session()->user_id);
+            $data = [
+                'post' => $anggota,
+                'err' => $this->validation->getErrors()
+            ];
+            return view('ubah', $data);
         }
+    }
 
-        // Ambil nilai tanggal dari array pertama
-        // $tanggalA = array_column($a, 'tanggal');
+    function visi()
+    {
+        $info = $this->info->find(1);
+        return json_encode($info->visi);
+    }
 
-        // Ambil nilai tanggal dari array kedua
-        // $tanggalB = array_column($b, 'tanggal');
-
-        // Cari elemen yang ada di array kedua tetapi tidak ada di array pertama
-        // $nilaiTidakAda = array_diff($tanggalB, $a);
-
-        // Tampilkan nilai yang tidak ada dalam array pertama
-        // print_r($tanggalB);
+    function misi()
+    {
+        $info = $this->info->find(1);
+        return json_encode($info->misi);
     }
 }

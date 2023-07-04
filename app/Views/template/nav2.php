@@ -12,7 +12,7 @@ $cfg = new \SConfig();
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item mx-0 mx-lg-2"><a class="nav-link py-2 px-0 px-lg-1 rounded js-scroll-trigger" href="<?= site_url() ?>">Home</a></li>
+        <li class="nav-item mx-0 mx-lg-2"><a class="nav-link py-2 px-0 px-lg-1 rounded js-scroll-trigger" href="<?= site_url() ?>#home">Home</a></li>
         <li class="nav-item mx-0 mx-lg-2"><a class="nav-link py-2 px-0 px-lg-1 rounded js-scroll-trigger" href="<?= site_url() ?>#visi_misi">Visi & Misi</a></li>
         <li class="nav-item mx-0 mx-lg-2"><a class="nav-link py-2 px-0 px-lg-1 rounded js-scroll-trigger" href="<?= site_url() ?>#pengurus_inti_h4">Struktur Kepengurusan</a></li>
         <li class="nav-item mx-0 mx-lg-2"><a class="nav-link py-2 px-0 px-lg-1 rounded js-scroll-trigger" href="<?= site_url() ?>#galeri">Galeri</a></li>
@@ -22,9 +22,13 @@ $cfg = new \SConfig();
             <i class="fa fa-user"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <!-- <li><a class="dropdown-item js-scroll-trigger" href="#">Ubah Profil</a></li> -->
-            <!-- <li><a class="dropdown-item js-scroll-trigger" href="#">Logout</a></li> -->
-            <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('login') ?>">Login</a></li>
+            <?php if (session()->isLogin) { ?>
+              <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('berkas') ?>">Berkas</a></li>
+              <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('ubah') ?>">Ubah Profil</a></li>
+              <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('logout') ?>">Logout</a></li>
+            <?php  } else { ?>
+              <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('login') ?>">Login</a></li>
+            <?php  } ?>
           </ul>
         </li>
       </ul>

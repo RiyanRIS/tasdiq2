@@ -71,7 +71,7 @@ class AuthModel extends Model
     }
   }
 
-  public function logout($id)
+  public function logout()
   {
     $sessionData = [
       'user_id'             => '',
