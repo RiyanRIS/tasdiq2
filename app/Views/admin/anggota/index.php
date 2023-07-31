@@ -22,7 +22,7 @@
             <div class="col-sm-12">
               <a href="<?= site_url('admin/anggota/tambah') ?>" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Anggota</a>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
               <div class="card card-success">
                 <div class="card-header">
                   <h3 class="card-title">List Anggota</h3>
@@ -37,7 +37,7 @@
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>USERNAME</th>
+                        <th>ANGKATAN</th>
                         <th>NAMA</th>
                         <th>AKSI</th>
                       </tr>
@@ -45,9 +45,9 @@
                     <tbody>
                       <?php if ($anggota != null) {
                         foreach ($anggota as $key => $v) { ?>
-                          <tr>
+                          <tr data-user="<?= $v->username ?>">
                             <td><?= ++$key ?></td>
-                            <td><?= $v->username ?></td>
+                            <td><?= $v->angkatan ?></td>
                             <td><?= $v->nama ?></td>
                             <td>
                               <a onclick="return confirm('Hapus Data?\nTindakan ini tidak dapat diurungkan.')" href="<?= site_url('admin/anggota/hapus/' . $v->id_anggota) ?>" class="btn btn-sm btn-danger" title="Hapus"><i class="fa fa-trash"></i></a>
@@ -63,7 +63,7 @@
             </div>
 
             <!-- FORM Berkas -->
-            <form method="post" action="tambah" data-refresh="refresh" data-url="<?= site_url("admin/anggota/tambah") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-sm-8">
+            <form method="post" action="tambah" data-refresh="refresh" data-url="<?= site_url("admin/anggota/tambah") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-sm-6">
               <div class="card card-success">
 
                 <div class="card-header">
@@ -180,9 +180,10 @@
     });
 
     $('#datatabletanpasearch tbody').on('click', 'tr', function() {
-      var rowData = table.row(this).data();
+      // var rowData = table.row(this).data();
+      var rowData = $(this).data('user');
       if (rowData) {
-        let username = rowData[1];
+        let username = rowData;
         $.getJSON('<?= site_url('api/anggota/') ?>' + username, function(anggota) {
           $('#id_anggota').val(anggota.id_anggota)
           $('#nama').val(anggota.nama)

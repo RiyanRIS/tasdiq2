@@ -33,7 +33,7 @@
                 <div class="card-body">
                   <div class="form-group" id="notifikasi_nama">
                     <label for="nama">Nama</label>
-                    <input type="hidden" name="id" value="<?= @$record['id'] ?>">
+                    <input type="hidden" name="id_anggota" value="<?= @$record['id_anggota'] ?>">
                     <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Anggota" required="true" autocomplete="off">
                   </div>
 

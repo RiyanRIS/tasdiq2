@@ -13,9 +13,27 @@ class Home extends BaseController
             'galeri' => $this->galeri->find(),
             'info' => $this->info->find(1),
         ];
-        // print_r($data);
-        // die();
         return view('index', $data);
+    }
+
+    public function galery()
+    {
+        $data = [
+            'banner' => $this->banner->find(),
+            'galeri' => $this->galeri->find(),
+            'info' => $this->info->find(1),
+        ];
+        return view('galery', $data);
+    }
+
+    public function organ()
+    {
+        $data = [
+            'banner' => $this->banner->find(),
+            'galeri' => $this->galeri->find(),
+            'info' => $this->info->find(1),
+        ];
+        return view('organ', $data);
     }
 
     public function berkas()

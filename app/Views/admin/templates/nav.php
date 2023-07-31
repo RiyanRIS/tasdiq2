@@ -89,7 +89,7 @@ $cfg = new \SConfig();
                 <p>Banner</p>
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="<?= site_url('admin/pengaturan/visi') ?>" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Visi & Misi</p>
@@ -100,7 +100,7 @@ $cfg = new \SConfig();
                 <i class="far fa-circle nav-icon"></i>
                 <p>Struktur Kepengurusan</p>
               </a>
-            </li>
+            </li> -->
           </ul>
         </li>
         <!-- <li class="nav-item">

@@ -31,6 +31,8 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('berkas', 'Home::berkas');
+$routes->get('galery', 'Home::galery');
+$routes->get('organ', 'Home::organ');
 $routes->get('kampus', 'Home::kampus');
 $routes->match(['get', 'post'], 'ubah', 'Home::ubah');
 
