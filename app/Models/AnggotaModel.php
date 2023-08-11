@@ -12,7 +12,7 @@ class AnggotaModel extends Model
 
 	protected $returnType     = 'object';
 
-	protected $allowedFields = ['id_anggota', 'nama', 'tmpt_lahir', 'tgl_lahir', 'jenis_kelamin', 'agama', 'alamat', 'asl_sekolah', 'no_tlpn', 'email', 'angkatan', 'jurusan', 'username', 'password'];
+	protected $allowedFields = ['id_anggota', 'nama', 'tmpt_lahir', 'tgl_lahir', 'jenis_kelamin', 'agama', 'alamat', 'alamat_asal', 'asl_sekolah', 'no_tlpn', 'email', 'angkatan', 'jurusan', 'username', 'password'];
 
 	public $rules_tambah_ubah = [
 		'nama' => [
@@ -42,6 +42,11 @@ class AnggotaModel extends Model
 		],
 		'alamat' => [
 			'label'  => 'Alamat',
+			'rules'  => 'required',
+			'errors' => [],
+		],
+		'alamat_asal' => [
+			'label'  => 'Alamat Asal',
 			'rules'  => 'required',
 			'errors' => [],
 		],

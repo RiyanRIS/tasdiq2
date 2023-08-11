@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="card-body">
-                  <table id="datatabletanpasearch" class="table table-bordered table-hover">
+                  <table id="datatable" class="table table-bordered table-hover">
                     <thead>
                       <tr>
                         <th>#</th>
@@ -116,13 +116,18 @@
                     </select>
                   </div>
 
+                  <div class="form-group" id="notifikasi_alamat_asal">
+                    <label for="alamat_asal">Asal</label>
+                    <input type="text" class="form-control" id="alamat_asal" name="alamat_asal" placeholder="Masukkan Asal Anggota" required="true" autocomplete="off">
+                  </div>
+
                   <div class="form-group" id="notifikasi_alamat">
                     <label for="alamat">Domisili</label>
                     <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Domisili Anggota" required="true" autocomplete="off">
                   </div>
 
                   <div class="form-group" id="notifikasi_asl_sekolah">
-                    <label for="asl_sekolah">Asal Kampus</label>
+                    <label for="asl_sekolah">Kampus</label>
                     <input type="text" class="form-control" id="asl_sekolah" name="asl_sekolah" placeholder="Masukkan Kampus Anggota" required="true" autocomplete="off">
                   </div>
 
@@ -133,7 +138,7 @@
 
                   <div class="form-group" id="notifikasi_angkatan">
                     <label for="angkatan">Angkatan</label>
-                    <input type="text" class="form-control" id="angkatan" name="angkatan" placeholder="Masukkan Angkatan Anggota" required="true" autocomplete="off">
+                    <input type="number" class="form-control" id="angkatan" name="angkatan" placeholder="Masukkan Angkatan Anggota" required="true" autocomplete="off">
                   </div>
 
                   <div class="form-group" id="notifikasi_no_tlpn">
@@ -179,7 +184,7 @@
       searching: false
     });
 
-    $('#datatabletanpasearch tbody').on('click', 'tr', function() {
+    $('#datatable tbody').on('click', 'tr', function() {
       // var rowData = table.row(this).data();
       var rowData = $(this).data('user');
       if (rowData) {
@@ -188,6 +193,7 @@
           $('#id_anggota').val(anggota.id_anggota)
           $('#nama').val(anggota.nama)
           $('#alamat').val(anggota.alamat)
+          $('#alamat_asal').val(anggota.alamat_asal)
           $('#tmpt_lahir').val(anggota.tmpt_lahir)
           $('#tgl_lahir').val(anggota.tgl_lahir)
           $('#asl_sekolah').val(anggota.asl_sekolah)

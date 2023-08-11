@@ -33,6 +33,11 @@ class Kampus extends BaseController
                 'label'  => 'Alamat Kampus',
                 'rules'  => 'required',
                 'errors' => [],
+            ],
+            'link_kampus' => [
+                'label'  => 'Link Kampus',
+                'rules'  => 'required',
+                'errors' => [],
             ]
         ];
         $this->validation->setRules($rules);
