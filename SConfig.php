@@ -1,5 +1,6 @@
 <?php
-class SConfig{
+class SConfig
+{
     public $_namaApp = "SIPEGA";
     public $_namaOrganisasi = "SMPN 3 TULUNGAGUNG";
     public $_alamatOrganisasi = 'Jl. Srantil Bhakti No. 14A RT 15 RW 12<br />Kec. Banguntapan, Kab. Bantul, Daerah Istimewa Yogyakarta 66782';
@@ -17,9 +18,10 @@ class SConfig{
 
     public $_visi = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatem provident, velit ea dolore voluptatibus? Voluptate, cum laborum eligendi hic, reprehenderit aliquid temporibus dolor facilis tempora magnam beatae aliquam ipsum..';
     public $_waAdmin = '6289677249060';
-    
-    function is_active($a, $b){
-        if($a == $b){
+
+    function is_active($a, $b)
+    {
+        if ($a == $b) {
             echo "active";
         }
     }
