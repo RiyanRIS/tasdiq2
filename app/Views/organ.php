@@ -23,7 +23,7 @@ $cfg = new \SConfig();
       <!-- HEADING -->
       <div class="container">
         <div class="text-center">
-          <img class="d-block mx-auto mb-4" src="/assets/img/gambar2.png" alt="" width="200">
+          <img class="d-block mx-auto mb-4" src="<?= base_url() ?>/assets/img/gambar2.png" alt="" width="200">
         </div>
         <div class="text-justify">
           <p>

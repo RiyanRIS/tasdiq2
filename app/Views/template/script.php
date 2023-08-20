@@ -2,7 +2,7 @@
 $cfg = new \SConfig();
 ?>
 <script>
-  let base_url = '<?= base_url() ?>'
+  let base_url = '<?= site_url() ?>'
 </script>
 
 <!-- Bootstrap core JS-->
@@ -24,7 +24,7 @@ $cfg = new \SConfig();
 <script src="<?= base_url('assets') ?>/js/slide_show.js" type="text/javascript" charset="utf-8"></script>
 
 <!-- Notifications Plugin -->
-<script src="<?= site_url('assets/') ?>plugins/toastr/toastr.min.js"></script>
+<script src="<?= base_url('assets/') ?>plugins/toastr/toastr.min.js"></script>
 
 <!-- JavaScript -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>

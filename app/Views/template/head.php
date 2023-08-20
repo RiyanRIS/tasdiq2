@@ -20,4 +20,4 @@ $cfg = new \SConfig();
 <!-- Slide CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
 <!-- Notifications css -->
-<link rel="stylesheet" href="<?= site_url('assets/') ?>plugins/toastr/toastr.min.css" type="text/css" />
+<link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/toastr/toastr.min.css" type="text/css" />
