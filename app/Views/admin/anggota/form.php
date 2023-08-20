@@ -33,7 +33,7 @@
                 <div class="card-body">
                   <div class="form-group" id="notifikasi_nama">
                     <label for="nama">Nama</label>
-                    <input type="hidden" name="id" value="<?= @$record['id'] ?>">
+                    <input type="hidden" name="id_anggota" value="<?= @$record['id_anggota'] ?>">
                     <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Anggota" required="true" autocomplete="off">
                   </div>
 
@@ -72,13 +72,19 @@
                     </select>
                   </div>
 
+                  <div class="form-group" id="notifikasi_alamat_asal">
+                    <label for="alamat_asal">Asal</label>
+                    <input type="text" class="form-control" id="alamat_asal" name="alamat_asal" placeholder="Masukkan Asal Anggota" required="true" autocomplete="off">
+                  </div>
+
+
                   <div class="form-group" id="notifikasi_alamat">
                     <label for="alamat">Domisili</label>
                     <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Domisili Anggota" required="true" autocomplete="off">
                   </div>
 
                   <div class="form-group" id="notifikasi_asl_sekolah">
-                    <label for="asl_sekolah">Asal Kampus</label>
+                    <label for="asl_sekolah">Kampus</label>
                     <input type="text" class="form-control" id="asl_sekolah" name="asl_sekolah" placeholder="Masukkan Kampus Anggota" required="true" autocomplete="off">
                   </div>
 
@@ -89,7 +95,7 @@
 
                   <div class="form-group" id="notifikasi_angkatan">
                     <label for="angkatan">Angkatan</label>
-                    <input type="text" class="form-control" id="angkatan" name="angkatan" placeholder="Masukkan Angkatan Anggota" required="true" autocomplete="off">
+                    <input type="number" class="form-control" id="angkatan" name="angkatan" placeholder="Masukkan Angkatan Anggota" required="true" autocomplete="off">
                   </div>
 
                   <div class="form-group" id="notifikasi_no_tlpn">

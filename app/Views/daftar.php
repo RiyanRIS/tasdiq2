@@ -74,6 +74,14 @@ $cfg = new \SConfig();
         </div>
 
         <div class="mb-3 col-md-12">
+          <label for="alamat_asal">Alamat Asal</label>
+          <input type="text" class="form-control" name="alamat_asal" id="alamat_asal" placeholder="Masukkan Asal" value="<?= @$post['alamat_asal'] ?>" required>
+          <div class="invalid-feedback">
+            <?= @$err['alamat_asal'] ?>
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-12">
           <label for="alamat">Alamat Domisili</label>
           <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Masukkan Alamat Di Yogyakarta" value="<?= @$post['alamat'] ?>" required>
           <div class="invalid-feedback">
@@ -82,8 +90,8 @@ $cfg = new \SConfig();
         </div>
 
         <div class="mb-3 col-md-12">
-          <label for="asl_sekolah">Kampus Asal</label>
-          <input type="text" class="form-control" name="asl_sekolah" id="asl_sekolah" placeholder="Masukkan Kampus Asal" value="<?= @$post['asl_sekolah'] ?>" required>
+          <label for="asl_sekolah">Kampus</label>
+          <input type="text" class="form-control" name="asl_sekolah" id="asl_sekolah" placeholder="Masukkan Kampus" value="<?= @$post['asl_sekolah'] ?>" required>
           <div class="invalid-feedback">
             <?= @$err['asl_sekolah'] ?>
           </div>
@@ -99,7 +107,7 @@ $cfg = new \SConfig();
 
         <div class="mb-3 col-md-6">
           <label for="angkatan">Angkatan</label>
-          <input type="text" class="form-control" name="angkatan" id="angkatan" placeholder="Masukkan Angkatan Kuliah" value="<?= @$post['angkatan'] ?>" required>
+          <input type="number" class="form-control" name="angkatan" id="angkatan" placeholder="Masukkan Angkatan Kuliah" value="<?= @$post['angkatan'] ?>" required>
           <div class="invalid-feedback">
             <?= @$err['angkatan'] ?>
           </div>

@@ -1,5 +1,8 @@
 <?php
 $cfg = new \SConfig();
+$uri = $_SERVER['REQUEST_URI'];
+echo $uri;
+
 ?>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg text-uppercase fixed-top" id="mainNav" style="background-color: #197513!important;">
@@ -12,25 +15,24 @@ $cfg = new \SConfig();
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item mx-0 mx-lg-2"><a class="nav-link py-2 px-0 px-lg-1 rounded js-scroll-trigger" href="#home">Home</a></li>
-        <li class="nav-item mx-0 mx-lg-2"><a class="nav-link py-2 px-0 px-lg-1 rounded js-scroll-trigger" href="#visi_misi">Visi & Misi</a></li>
-        <li class="nav-item mx-0 mx-lg-2"><a class="nav-link py-2 px-0 px-lg-1 rounded js-scroll-trigger" href="#pengurus_inti_h4">Struktur Kepengurusan</a></li>
-        <li class="nav-item mx-0 mx-lg-2"><a class="nav-link py-2 px-0 px-lg-1 rounded js-scroll-trigger" href="#galeri">Galeri</a></li>
+        <li class="nav-item mx-0 mx-lg-2"><a class="nav-link py-2 px-0 px-lg-1 rounded js-scroll-trigger <?= ($uri == '/kampus' ? 'active' : '') ?>" href="<?= site_url('kampus') ?>">Informasi Kampus</a></li>
+        <li class="nav-item mx-0 mx-lg-2"><a class="nav-link py-2 px-0 px-lg-1 rounded js-scroll-trigger <?= ($uri == '/organ' ? 'active' : '') ?>" href="<?= site_url('organ') ?>">Organisasi</a></li>
+        <!-- <li class="nav-item mx-0 mx-lg-2"><a class="nav-link py-2 px-0 px-lg-1 rounded js-scroll-trigger" href="#galeri">Galeri</a></li> -->
+        <?php if (session()->isLogin) { ?>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link py-2 px-0 px-lg-1 rounded dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-user"></i>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <?php if (session()->isLogin) { ?>
+          <li class="nav-item dropdown">
+            <a class="nav-link py-2 px-0 px-lg-1 rounded dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-user"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
               <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('berkas') ?>">Berkas</a></li>
-              <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('kampus') ?>">Kampus</a></li>
+              <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('galery') ?>">Galery</a></li>
               <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('ubah') ?>">Ubah Profil</a></li>
               <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('logout') ?>">Logout</a></li>
-            <?php  } else { ?>
-              <li><a class="dropdown-item js-scroll-trigger" href="<?= site_url('login') ?>">Login</a></li>
-            <?php  } ?>
-          </ul>
-        </li>
+            </ul>
+          </li>
+        <?php  } ?>
+
       </ul>
     </div>
   </div>

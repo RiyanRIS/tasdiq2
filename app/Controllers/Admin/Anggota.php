@@ -38,7 +38,7 @@ class Anggota extends BaseController
         if ($this->request->getPost() && $this->validation->withRequest($this->request)->run()) {
             $additionalData = $this->request->getPost();
 
-            if ($additionalData['id_anggota'] == '') { // TAMBAH
+            if (@$additionalData['id_anggota'] == '') { // TAMBAH
                 unset($additionalData['id_anggota']);
 
                 $additionalData['password'] =  password_hash($additionalData['password'], PASSWORD_DEFAULT);
@@ -107,21 +107,11 @@ class Anggota extends BaseController
     {
         if (!$this->isSecure()) return redirect()->to(site_url('/admin/login'))->with('msg', [0, 'Sesi anda telah kadaluarsa.']);
 
-        $data = $this->kampus->find($id);
+        $hapus = $this->anggota->delete($id);
 
-        $path = ROOTPATH . 'public/uploads/kampus/' . $data->file;
+        $msg = ($hapus ? [1, "Berhasil menghapus data"] : [0, "Gagal menghapus data"]);
 
-        if (file_exists($path)) {
-            unlink($path);
-
-            $hapus = $this->kampus->delete($id);
-
-            $msg = ($hapus ? [1, "Berhasil menghapus data"] : [0, "Gagal menghapus data"]);
-        } else {
-            $msg = [0, "Gagal menghapus dataa"];
-        }
-
-        return redirect()->to(site_url('admin/kampus'))->with('msg', $msg);
+        return redirect()->to(site_url('admin/anggota'))->with('msg', $msg);
     }
 
     public function getbyusername($username)

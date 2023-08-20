@@ -36,6 +36,7 @@
                         <th>#</th>
                         <th>NAMA</th>
                         <th>ALAMAT</th>
+                        <th>LINK</th>
                         <th>LOGO</th>
                         <th>AKSI</th>
                       </tr>
@@ -47,6 +48,7 @@
                             <td><?= ++$key ?></td>
                             <td><?= strtoupper($v->nama_kampus) ?></td>
                             <td><?= $v->alamat_kampus ?></td>
+                            <td><a href="<?= $v->link_kampus ?>"><?= $v->link_kampus ?></a></td>
                             <td><img src="<?= base_url('uploads/kampus/' . $v->file) ?>" alt="<?= $v->nama_kampus ?>" style="height:64px"></td>
                             <td>
                               <a onclick="return confirm('Hapus Data?\nTindakan ini tidak dapat diurungkan.')" href="<?= site_url('admin/kampus/hapus/' . $v->id_kampus) ?>" class="btn btn-sm btn-danger" title="Hapus"><i class="fa fa-trash"></i></a>
@@ -82,6 +84,11 @@
                   <div class="form-group" id="notifikasi_alamat_kampus">
                     <label for="alamat_kampus">Alamat Kampus</label>
                     <input type="text" class="form-control" id="alamat_kampus" name="alamat_kampus" placeholder="Masukkan Alamat Kampus" required="true" autocomplete="off">
+                  </div>
+
+                  <div class="form-group" id="notifikasi_link_kampus">
+                    <label for="link_kampus">Link Kampus</label>
+                    <input type="text" class="form-control" id="link_kampus" name="link_kampus" placeholder="Masukkan Link Kampus" required="true" autocomplete="off">
                   </div>
 
                   <div class="form-group" id="notifikasi_file">

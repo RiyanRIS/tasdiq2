@@ -11,7 +11,7 @@ class KampusModel extends Model
 
 	protected $returnType     = 'object';
 
-	protected $allowedFields = ['id_kampus', 'nama_kampus', 'alamat_kampus', 'logo_kampus', 'upload_at'];
+	protected $allowedFields = ['id_kampus', 'nama_kampus', 'alamat_kampus', 'logo_kampus', 'link_kampus', 'upload_at'];
 
 	public function simpan($data)
 	{

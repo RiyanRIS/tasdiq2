@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2023 at 02:19 PM
+-- Generation Time: Aug 11, 2023 at 05:19 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ci4`
+-- Database: `ci4_tasdiq2`
 --
 
 -- --------------------------------------------------------
@@ -54,7 +54,8 @@ CREATE TABLE `tbl_anggota` (
   `tgl_lahir` date NOT NULL,
   `jenis_kelamin` enum('Laki-laki','Perempuan','','') NOT NULL,
   `agama` enum('Islam','Kristen','Khatolik','Hindu','Budha','Konghuchu') NOT NULL,
-  `alamat` varchar(50) NOT NULL,
+  `alamat_asal` text NOT NULL,
+  `alamat` text NOT NULL,
   `asl_sekolah` varchar(50) NOT NULL,
   `no_tlpn` varchar(16) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -63,16 +64,6 @@ CREATE TABLE `tbl_anggota` (
   `username` varchar(30) NOT NULL,
   `password` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_anggota`
---
-
-INSERT INTO `tbl_anggota` (`id_anggota`, `nama`, `tmpt_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `alamat`, `asl_sekolah`, `no_tlpn`, `email`, `angkatan`, `jurusan`, `username`, `password`) VALUES
-(1, 'Ini nama lengkap', 'sleman', '2002-04-14', 'Laki-laki', 'Khatolik', 'Jl Mawar Bunga melati', 'ugm', '628966772323', 'ini@email.com', '2008', 'infor', '1234', '$2y$10$HEI.JkV5xm1k9Tk/P86p.O4gYQTaieuRRbAhfK7cgZlCKiqaSAaUa'),
-(2, 'nama2', '123', '1223-02-12', 'Perempuan', 'Khatolik', '123123', '123123', '12312', '3123@das.22', '3123123', '23232', '12345', '$2y$10$8kzn3b6g8EeaDnPoOtTbX.Ohcux3vz.O49/XgIfTCP/J/411E/pSC'),
-(3, 'Sulaiman', '123123', '2023-07-04', 'Laki-laki', 'Kristen', 'asddas', 'asdsad', 'asdsa', 'dsd.sd@das.dd', 'asdasd', 'sadas', 'asd', '$2y$10$KX9qWE86.BkEgIPhSj06guH0goK9UZ/QBHcaKhNCMR8IEMnYh7YS2'),
-(4, 'asdasd', 'asdasdas', '1333-12-12', 'Laki-laki', 'Kristen', '123', '123', '123', '123@dd.dd', '123', '123', '123', '$2y$10$MlaAqz1Rip4rkajpSvq7DOnTxPTYMxc5so4xW5kiHdRokpSgXRfJi');
 
 -- --------------------------------------------------------
 
@@ -92,9 +83,9 @@ CREATE TABLE `tbl_banner` (
 --
 
 INSERT INTO `tbl_banner` (`id_banner`, `nama`, `file`, `upload_at`) VALUES
-(3, 'Foto Keluarga Besar', '1688448498_6f87f7a98bcc14284038.jpeg', '2023-07-04 12:28:18'),
-(4, 'Bermain Dengan Siapa', '1688448517_3bf9ed601d51b614e24c.jpeg', '2023-07-04 12:28:37'),
-(6, 'Banyak Sekali Kawan', '1688458240_ba84379b6427f70d5552.jpeg', '2023-07-04 15:10:40');
+(9, 'Kegiatan Rutin Futsal Bersama', '1691723441_646d18273a4e3a5251e3.jpeg', '2023-08-11 10:10:41'),
+(11, 'Tari', '1691723620_2ac8ca990652135c9222.jpeg', '2023-08-11 10:13:40'),
+(12, 'Bakti Sosial', '1691723635_5cea505bac81e05d00b2.jpeg', '2023-08-11 10:13:55');
 
 -- --------------------------------------------------------
 
@@ -108,14 +99,6 @@ CREATE TABLE `tbl_berkas` (
   `file` varchar(255) NOT NULL,
   `upload_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_berkas`
---
-
-INSERT INTO `tbl_berkas` (`id_berkas`, `nama`, `file`, `upload_at`) VALUES
-(4, 'hasil rat 2023', '1688445084_d8da56b0dd6c1a8657dc.pdf', '2023-07-04 11:31:24'),
-(5, 'dokumentasi rapat tahunan ', '1688445101_bbdcedde97657a438337.pdf', '2023-07-04 11:31:41');
 
 -- --------------------------------------------------------
 
@@ -135,26 +118,10 @@ CREATE TABLE `tbl_galeri` (
 --
 
 INSERT INTO `tbl_galeri` (`id_galeri`, `nama`, `file`, `upload_at`) VALUES
-(1, 'Riyan', '1688448306_a779a5bde30ff95765e6.jpeg', '2023-07-04 12:25:06');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_info`
---
-
-CREATE TABLE `tbl_info` (
-  `id_info` int(11) NOT NULL,
-  `visi` text NOT NULL,
-  `misi` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_info`
---
-
-INSERT INTO `tbl_info` (`id_info`, `visi`, `misi`) VALUES
-(1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatem provident, velit ea dolore voluptatibus? asdasd Voluptate, cum laborum eligendi hic, reprehenderit aliquid temporibus dolor facilis tempora magnam beatae aliquam ipsum.. asdasdas', 'Lorem, ipsum dolor sit amet consectetuasdsar adipisicing elit. Velit corrupti earum, voluptate voluptas vel harum enim tempore corporis! Expedita doloremque reiciendis quae voluptas eius quas esse atque praesentium nisi sed');
+(4, 'as', '1691723654_48090062db2fc5f537e3.jpeg', '2023-08-11 10:14:14'),
+(5, 'as', '1691723673_5dbc76e62638314381eb.jpeg', '2023-08-11 10:14:33'),
+(6, 'as', '1691723680_9b422bd5f48fad86ff68.jpg', '2023-08-11 10:14:40'),
+(7, 'as', '1691723691_7f461ec4f01fb8b3c18b.jpeg', '2023-08-11 10:14:51');
 
 -- --------------------------------------------------------
 
@@ -166,39 +133,10 @@ CREATE TABLE `tbl_kampus` (
   `id_kampus` int(11) NOT NULL,
   `nama_kampus` varchar(255) NOT NULL,
   `alamat_kampus` varchar(255) NOT NULL,
+  `link_kampus` varchar(255) NOT NULL,
   `file` varchar(255) NOT NULL,
   `create_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_kampus`
---
-
-INSERT INTO `tbl_kampus` (`id_kampus`, `nama_kampus`, `alamat_kampus`, `file`, `create_at`) VALUES
-(1, 'stimik akakom yogyakarta', 'Jl. Raya Janti No.143, Jaranan, Banguntapan, Kec. Banguntapan, Bantul, Daerah Istimewa Yogyakarta 55198', '1688372496_d891f031d60cbd3fd619.jpg', '2023-07-03 15:21:36'),
-(2, 'UNIversitas gajah mada', '69HG+CXX, Bulaksumur, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281', '1688373002_15dbeb479e4ecd32d2bd.png', '2023-07-03 15:30:02');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_struktur`
---
-
-CREATE TABLE `tbl_struktur` (
-  `id_struktur` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `jabatan` varchar(64) NOT NULL,
-  `file` varchar(255) NOT NULL,
-  `upload_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_struktur`
---
-
-INSERT INTO `tbl_struktur` (`id_struktur`, `nama`, `jabatan`, `file`, `upload_at`) VALUES
-(1, 'RIyan Ris', 'Ketua Umum', '1688448401_b9f144256ccd9fe0241c.jpeg', '2023-07-04 12:26:41'),
-(2, 'Fhareza Alvindo', 'Pembina', '1688448447_a0840ddda1bf513e852b.jpeg', '2023-07-04 12:27:27');
 
 --
 -- Indexes for dumped tables
@@ -235,22 +173,10 @@ ALTER TABLE `tbl_galeri`
   ADD PRIMARY KEY (`id_galeri`);
 
 --
--- Indexes for table `tbl_info`
---
-ALTER TABLE `tbl_info`
-  ADD PRIMARY KEY (`id_info`);
-
---
 -- Indexes for table `tbl_kampus`
 --
 ALTER TABLE `tbl_kampus`
   ADD PRIMARY KEY (`id_kampus`);
-
---
--- Indexes for table `tbl_struktur`
---
-ALTER TABLE `tbl_struktur`
-  ADD PRIMARY KEY (`id_struktur`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -266,43 +192,31 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_anggota`
 --
 ALTER TABLE `tbl_anggota`
-  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `tbl_banner`
 --
 ALTER TABLE `tbl_banner`
-  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_berkas`
 --
 ALTER TABLE `tbl_berkas`
-  MODIFY `id_berkas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_berkas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `tbl_galeri`
 --
 ALTER TABLE `tbl_galeri`
-  MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbl_info`
---
-ALTER TABLE `tbl_info`
-  MODIFY `id_info` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_galeri` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_kampus`
 --
 ALTER TABLE `tbl_kampus`
-  MODIFY `id_kampus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `tbl_struktur`
---
-ALTER TABLE `tbl_struktur`
-  MODIFY `id_struktur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kampus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

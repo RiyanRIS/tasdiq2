@@ -22,7 +22,7 @@
             <div class="col-sm-12">
               <a href="<?= site_url('admin/anggota/tambah') ?>" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Anggota</a>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
               <div class="card card-success">
                 <div class="card-header">
                   <h3 class="card-title">List Anggota</h3>
@@ -33,11 +33,11 @@
                 </div>
 
                 <div class="card-body">
-                  <table id="datatabletanpasearch" class="table table-bordered table-hover">
+                  <table id="datatable" class="table table-bordered table-hover">
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>USERNAME</th>
+                        <th>ANGKATAN</th>
                         <th>NAMA</th>
                         <th>AKSI</th>
                       </tr>
@@ -45,9 +45,9 @@
                     <tbody>
                       <?php if ($anggota != null) {
                         foreach ($anggota as $key => $v) { ?>
-                          <tr>
+                          <tr data-user="<?= $v->username ?>">
                             <td><?= ++$key ?></td>
-                            <td><?= $v->username ?></td>
+                            <td><?= $v->angkatan ?></td>
                             <td><?= $v->nama ?></td>
                             <td>
                               <a onclick="return confirm('Hapus Data?\nTindakan ini tidak dapat diurungkan.')" href="<?= site_url('admin/anggota/hapus/' . $v->id_anggota) ?>" class="btn btn-sm btn-danger" title="Hapus"><i class="fa fa-trash"></i></a>
@@ -63,7 +63,7 @@
             </div>
 
             <!-- FORM Berkas -->
-            <form method="post" action="tambah" data-refresh="refresh" data-url="<?= site_url("admin/anggota/tambah") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-sm-8">
+            <form method="post" action="tambah" data-refresh="refresh" data-url="<?= site_url("admin/anggota/tambah") ?>" id="myForm" enctype="multipart/form-data" accept-charset="utf-8" class="col-sm-6">
               <div class="card card-success">
 
                 <div class="card-header">
@@ -116,13 +116,18 @@
                     </select>
                   </div>
 
+                  <div class="form-group" id="notifikasi_alamat_asal">
+                    <label for="alamat_asal">Asal</label>
+                    <input type="text" class="form-control" id="alamat_asal" name="alamat_asal" placeholder="Masukkan Asal Anggota" required="true" autocomplete="off">
+                  </div>
+
                   <div class="form-group" id="notifikasi_alamat">
                     <label for="alamat">Domisili</label>
                     <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Domisili Anggota" required="true" autocomplete="off">
                   </div>
 
                   <div class="form-group" id="notifikasi_asl_sekolah">
-                    <label for="asl_sekolah">Asal Kampus</label>
+                    <label for="asl_sekolah">Kampus</label>
                     <input type="text" class="form-control" id="asl_sekolah" name="asl_sekolah" placeholder="Masukkan Kampus Anggota" required="true" autocomplete="off">
                   </div>
 
@@ -133,7 +138,7 @@
 
                   <div class="form-group" id="notifikasi_angkatan">
                     <label for="angkatan">Angkatan</label>
-                    <input type="text" class="form-control" id="angkatan" name="angkatan" placeholder="Masukkan Angkatan Anggota" required="true" autocomplete="off">
+                    <input type="number" class="form-control" id="angkatan" name="angkatan" placeholder="Masukkan Angkatan Anggota" required="true" autocomplete="off">
                   </div>
 
                   <div class="form-group" id="notifikasi_no_tlpn">
@@ -179,14 +184,16 @@
       searching: false
     });
 
-    $('#datatabletanpasearch tbody').on('click', 'tr', function() {
-      var rowData = table.row(this).data();
+    $('#datatable tbody').on('click', 'tr', function() {
+      // var rowData = table.row(this).data();
+      var rowData = $(this).data('user');
       if (rowData) {
-        let username = rowData[1];
+        let username = rowData;
         $.getJSON('<?= site_url('api/anggota/') ?>' + username, function(anggota) {
           $('#id_anggota').val(anggota.id_anggota)
           $('#nama').val(anggota.nama)
           $('#alamat').val(anggota.alamat)
+          $('#alamat_asal').val(anggota.alamat_asal)
           $('#tmpt_lahir').val(anggota.tmpt_lahir)
           $('#tgl_lahir').val(anggota.tgl_lahir)
           $('#asl_sekolah').val(anggota.asl_sekolah)

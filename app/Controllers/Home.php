@@ -10,16 +10,31 @@ class Home extends BaseController
     {
         $data = [
             'banner' => $this->banner->find(),
+        ];
+
+        return view('index', $data);
+    }
+
+    public function galery()
+    {
+        if (!$this->isSecure('user')) return redirect()->to(site_url('/login'))->with('msg', [0, 'Login untuk mengakses halaman tersebut.']);
+        $data = [
+            'banner' => $this->banner->find(),
             'galeri' => $this->galeri->find(),
             'info' => $this->info->find(1),
         ];
-        // print_r($data);
-        // die();
-        return view('index', $data);
+        return view('galery', $data);
+    }
+
+    public function organ()
+    {
+        $data = [];
+        return view('organ', $data);
     }
 
     public function berkas()
     {
+        if (!$this->isSecure('user')) return redirect()->to(site_url('/login'))->with('msg', [0, 'Login untuk mengakses halaman tersebut.']);
         $berkas = $this->berkas->find();
         $data = [
             'berkas' => $berkas,
@@ -38,6 +53,7 @@ class Home extends BaseController
 
     public function ubah()
     {
+        if (!$this->isSecure('user')) return redirect()->to(site_url('/login'))->with('msg', [0, 'Login untuk mengakses halaman tersebut.']);
         $this->validation->setRules($this->anggota->rules_tambah_ubah);
         if ($this->request->getPost() && $this->validation->withRequest($this->request)->run()) {
             // inisialisasi data yang akan dimasukkan ke database
@@ -81,23 +97,5 @@ class Home extends BaseController
             ];
             return view('ubah', $data);
         }
-    }
-
-    function visi()
-    {
-        $info = $this->info->find(1);
-        return json_encode($info->visi);
-    }
-
-    function misi()
-    {
-        $info = $this->info->find(1);
-        return json_encode($info->misi);
-    }
-
-    function struktur()
-    {
-        $struktur = $this->struktur->find();
-        return json_encode($struktur);
     }
 }

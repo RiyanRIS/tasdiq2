@@ -1,15 +1,16 @@
 <?php
 class SConfig
 {
-    public $_namaApp = "SIPEGA";
-    public $_namaOrganisasi = "SMPN 3 TULUNGAGUNG";
-    public $_alamatOrganisasi = 'Jl. Srantil Bhakti No. 14A RT 15 RW 12<br />Kec. Banguntapan, Kab. Bantul, Daerah Istimewa Yogyakarta 66782';
+    public $_namaApp = "GAYO";
+    public $_namaOrganisasi = "MAHASISWA GAYO LUES YOGYAKARTA";
+    public $_alamatOrganisasi = 'Sonopakis Kidul nomor 148, RT/RW: 004/-, Desa Ngestiharjo, Kecamatan Kasihan,
+    Kabupaten Bantul. ';
     public $_sosmed = [
         'instagram' => 'https://www.instagram.com/',
         'tiktok' => '',
-        'facebook' => '',
+        'facebook' => 'https://youtube.com/',
         'youtube' => '',
-        'email' => 'humas@smpn3tulungagung.sch',
+        'email' => 'humas@gayoluesyk.org',
         'twitter' => '',
     ];
 
