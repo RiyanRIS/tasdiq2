@@ -19,9 +19,7 @@ class Home extends BaseController
     {
         if (!$this->isSecure('user')) return redirect()->to(site_url('/login'))->with('msg', [0, 'Login untuk mengakses halaman tersebut.']);
         $data = [
-            'banner' => $this->banner->find(),
             'galeri' => $this->galeri->find(),
-            'info' => $this->info->find(1),
         ];
         return view('galery', $data);
     }
@@ -88,6 +86,7 @@ class Home extends BaseController
             }
         } else {
             if ($this->validation->getErrors()) {
+                print_r($this->validation->getErrors());
                 session()->setFlashdata('msg', [0, "Isian belum lengkap"]);
             }
             $anggota = (array) $this->anggota->find(session()->user_id);

@@ -60,7 +60,7 @@ CREATE TABLE `tbl_anggota` (
   `no_tlpn` varchar(16) NOT NULL,
   `email` varchar(50) NOT NULL,
   `angkatan` varchar(64) NOT NULL,
-  `jurusan` varchar(5) NOT NULL,
+  `jurusan` varchar(32) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

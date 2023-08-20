@@ -45,11 +45,7 @@ class AnggotaModel extends Model
 			'rules'  => 'required',
 			'errors' => [],
 		],
-		'alamat_asal' => [
-			'label'  => 'Alamat Asal',
-			'rules'  => 'required',
-			'errors' => [],
-		],
+
 		'asl_sekolah' => [
 			'label'  => 'Asal Sekolah',
 			'rules'  => 'required',
