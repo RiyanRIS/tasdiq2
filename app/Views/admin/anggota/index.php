@@ -126,9 +126,9 @@
                     <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Domisili Anggota" required="true" autocomplete="off">
                   </div>
 
-                  <div class="form-group" id="notifikasi_asl_sekolah">
-                    <label for="asl_sekolah">Kampus</label>
-                    <input type="text" class="form-control" id="asl_sekolah" name="asl_sekolah" placeholder="Masukkan Kampus Anggota" required="true" autocomplete="off">
+                  <div class="form-group" id="notifikasi_kampus">
+                    <label for="kampus">Kampus</label>
+                    <input type="text" class="form-control" id="kampus" name="kampus" placeholder="Masukkan Kampus Anggota" required="true" autocomplete="off">
                   </div>
 
                   <div class="form-group" id="notifikasi_jurusan">
@@ -196,7 +196,7 @@
           $('#alamat_asal').val(anggota.alamat_asal)
           $('#tmpt_lahir').val(anggota.tmpt_lahir)
           $('#tgl_lahir').val(anggota.tgl_lahir)
-          $('#asl_sekolah').val(anggota.asl_sekolah)
+          $('#kampus').val(anggota.kampus)
           $('#no_tlpn').val(anggota.no_tlpn)
           $('#email').val(anggota.email)
           $('#angkatan').val(anggota.angkatan)

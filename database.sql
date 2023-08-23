@@ -56,7 +56,7 @@ CREATE TABLE `tbl_anggota` (
   `agama` enum('Islam','Kristen','Khatolik','Hindu','Budha','Konghuchu') NOT NULL,
   `alamat_asal` text NOT NULL,
   `alamat` text NOT NULL,
-  `asl_sekolah` varchar(50) NOT NULL,
+  `kampus` varchar(50) NOT NULL,
   `no_tlpn` varchar(16) NOT NULL,
   `email` varchar(50) NOT NULL,
   `angkatan` varchar(64) NOT NULL,

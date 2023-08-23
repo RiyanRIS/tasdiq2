@@ -82,10 +82,10 @@ $cfg = new \SConfig();
         </div>
 
         <div class="mb-3 col-md-12">
-          <label for="asl_sekolah">Kampus Asal</label>
-          <input type="text" class="form-control" name="asl_sekolah" id="asl_sekolah" placeholder="Masukkan Kampus Asal" value="<?= @$post['asl_sekolah'] ?>" required>
+          <label for="kampus">Kampus Asal</label>
+          <input type="text" class="form-control" name="kampus" id="kampus" placeholder="Masukkan Kampus Asal" value="<?= @$post['kampus'] ?>" required>
           <div class="invalid-feedback">
-            <?= @$err['asl_sekolah'] ?>
+            <?= @$err['kampus'] ?>
           </div>
         </div>
 

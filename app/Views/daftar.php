@@ -89,20 +89,12 @@ $cfg = new \SConfig();
           </div>
         </div>
 
-        <!-- <div class="mb-3 col-md-12">
-          <label for="asl_sekolah">Kampus</label>
-          <input type="text" class="form-control" name="asl_sekolah" id="asl_sekolah" placeholder="Masukkan Kampus" value="<?= @$post['asl_sekolah'] ?>" required>
-          <div class="invalid-feedback">
-            <?= @$err['asl_sekolah'] ?>
-          </div>
-        </div> -->
-
         <div class="mb-3 col-md-6">
-          <label for="asl_sekolah">Kampus</label>
-          <select class="custom-select d-block w-100" name="asl_sekolah" id="asl_sekolah" required>
+          <label for="kampus">Kampus</label>
+          <select class="custom-select d-block w-100" name="kampus" id="kampus" required>
             <option value="">--- Pilih Kampus ---</option>
             <?php foreach ($kampus as $key => $value) { ?>
-              <option <?= ($value->nama_kampus == @$post['asl_sekolah'] ? 'selected' : '') ?> value="<?= $value->nama_kampus ?>"><?= $value->nama_kampus ?></option>
+              <option <?= ($value->nama_kampus == @$post['kampus'] ? 'selected' : '') ?> value="<?= $value->nama_kampus ?>"><?= $value->nama_kampus ?></option>
             <?php } ?>
           </select>
           <div class="invalid-feedback">
