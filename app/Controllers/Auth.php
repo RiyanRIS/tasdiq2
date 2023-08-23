@@ -73,7 +73,9 @@ class Auth extends BaseController
 				return redirect()->to(site_url("daftar"))->with('msg', [1, "Gagal Mendaftar"]);
 			}
 		} else { // kondisi validasi error
+			$kampus = $this->kampus->find();
 			$data = [
+				'kampus' => $kampus,
 				'post' => $this->request->getPost(),
 				'err' => $this->validation->getErrors()
 			];
